@@ -3,10 +3,7 @@ package com.hemebiotech.analytics;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Simple brute force implementation
@@ -60,8 +57,11 @@ public class ReadSymptomDataFromFile implements ISymptomReader {
 					myMap.put(symptom, 1);
 				}
 			}
-			return myMap;
+			Map<String, Integer> sortedMap = new TreeMap<>(myMap);
+			return sortedMap;
 		}
-		return myMap;
+		Map<String, Integer> sortedMap = new TreeMap<>(myMap);
+
+		return sortedMap;
 	}
 }
