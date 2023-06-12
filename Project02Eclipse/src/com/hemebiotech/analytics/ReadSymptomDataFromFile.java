@@ -4,7 +4,9 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Simple brute force implementation
@@ -43,5 +45,23 @@ public class ReadSymptomDataFromFile implements ISymptomReader {
 		
 		return result;
 	}
-
+	@Override
+	public Map<String, Integer> CountSymptoms(List<String> file){
+		Map<String, Integer> myMap = new HashMap<String, Integer>();
+		if (file != null){
+			for (String symptom : file) {
+				// Vérifier si le symptôme existe déjà dans la map
+				if (myMap.containsKey(symptom)) {
+					// Si oui, incrémenter le compteur
+					int count = myMap.get(symptom);
+					myMap.put(symptom, count + 1);
+				} else {
+					// Sinon, ajouter le symptôme avec un compteur initial de 1
+					myMap.put(symptom, 1);
+				}
+			}
+			return myMap;
+		}
+		return myMap;
+	}
 }

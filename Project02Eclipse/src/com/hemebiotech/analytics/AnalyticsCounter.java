@@ -13,7 +13,7 @@ public class AnalyticsCounter {
 	public static void main(String args[]) throws Exception {
 		ReadSymptomDataFromFile readSymptomDataFromFile = new ReadSymptomDataFromFile("C:\\Users\\savain\\Documents\\OpenClassroom\\Blaneus_Savain_2_062023\\Project_DA_Java_EN_Come_to_the_Rescue_of_a_Java_Application\\Project02Eclipse\\symptoms.txt");
 		List<String> symptoms = readSymptomDataFromFile.GetSymptoms();
-		System.out.println(symptoms);
+		System.out.println(readSymptomDataFromFile.CountSymptoms(symptoms));
 		/* first get input
 		BufferedReader reader = new BufferedReader (new FileReader("symptoms.txt"));
 		String line = reader.readLine();
