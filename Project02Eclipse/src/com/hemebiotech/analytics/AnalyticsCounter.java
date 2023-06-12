@@ -1,47 +1,21 @@
 package com.hemebiotech.analytics;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.FileWriter;
 import java.util.List;
+import java.util.Map;
 
 public class AnalyticsCounter {
-	private static int headacheCount = 0;	// initialize to 0
-	private static int rashCount = 0;		// initialize to 0
-	private static int pupilCount = 0;		// initialize to 0
-	
+	private static String filePath = "C:\\Users\\savain\\Documents\\OpenClassroom\\Blaneus_Savain_2_062023\\Project_DA_Java_EN_Come_to_the_Rescue_of_a_Java_Application\\Project02Eclipse\\symptoms.txt";
 	public static void main(String args[]) throws Exception {
-		ReadSymptomDataFromFile readSymptomDataFromFile = new ReadSymptomDataFromFile("C:\\Users\\savain\\Documents\\OpenClassroom\\Blaneus_Savain_2_062023\\Project_DA_Java_EN_Come_to_the_Rescue_of_a_Java_Application\\Project02Eclipse\\symptoms.txt");
-		List<String> symptoms = readSymptomDataFromFile.GetSymptoms();
-		System.out.println(readSymptomDataFromFile.CountSymptoms(symptoms));
-		/* first get input
-		BufferedReader reader = new BufferedReader (new FileReader("symptoms.txt"));
-		String line = reader.readLine();
+		try {
+			IManageSymptom readSymptomDataFromFile = new ReadManageSymptomDataFromFile(filePath);
 
-		int i = 0;	// set i to 0
-		int headCount = 0;	// counts headaches
-		while (line != null) {
-			i++;	// increment i
-			System.out.println("symptom from file: " + line);
-			if (line.equals("headache")) {
-				headCount++;
-				System.out.println("number of headaches: " + headCount);
-			}
-			else if (line.equals("rush")) {
-				rashCount++;
-			}
-			else if (line.contains("pupils")) {
-				pupilCount++;
-			}
+			List<String> symptoms = readSymptomDataFromFile.GetSymptoms();
 
-			line = reader.readLine();	// get another symptom
+			Map<String, Integer> symptomsSort = readSymptomDataFromFile.CountSymptoms(symptoms);
+
+			readSymptomDataFromFile.CreateRapport(symptomsSort);
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-		
-		// next generate output
-		FileWriter writer = new FileWriter ("result.out");
-		writer.write("headache: " + headacheCount + "\n");
-		writer.write("rash: " + rashCount + "\n");
-		writer.write("dialated pupils: " + pupilCount + "\n");
-		writer.close();*/
 	}
 }
