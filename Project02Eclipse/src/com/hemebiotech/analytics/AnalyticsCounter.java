@@ -3,6 +3,7 @@ package com.hemebiotech.analytics;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.util.List;
 
 public class AnalyticsCounter {
 	private static int headacheCount = 0;	// initialize to 0
@@ -10,7 +11,10 @@ public class AnalyticsCounter {
 	private static int pupilCount = 0;		// initialize to 0
 	
 	public static void main(String args[]) throws Exception {
-		// first get input
+		ReadSymptomDataFromFile readSymptomDataFromFile = new ReadSymptomDataFromFile("C:\\Users\\savain\\Documents\\OpenClassroom\\Blaneus_Savain_2_062023\\Project_DA_Java_EN_Come_to_the_Rescue_of_a_Java_Application\\Project02Eclipse\\symptoms.txt");
+		List<String> symptoms = readSymptomDataFromFile.GetSymptoms();
+		System.out.println(symptoms);
+		/* first get input
 		BufferedReader reader = new BufferedReader (new FileReader("symptoms.txt"));
 		String line = reader.readLine();
 
@@ -38,6 +42,6 @@ public class AnalyticsCounter {
 		writer.write("headache: " + headacheCount + "\n");
 		writer.write("rash: " + rashCount + "\n");
 		writer.write("dialated pupils: " + pupilCount + "\n");
-		writer.close();
+		writer.close();*/
 	}
 }
